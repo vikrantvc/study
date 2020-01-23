@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import preprocessing
-
+from sklearn.metrics import accuracy_score
 
 def dataLoad():
     path="/home/vikrant/github/study/Anuja"
@@ -55,16 +55,11 @@ def main():
     X_trainNew=vectorizer.fit_transform(X_train)
     X_testNew=vectorizer.transform(X_test)
 
-    model=NaiveBayes(X_trainNew.toarray(),y_train)
-    pred=model.predict(X_testNew)
-    print(pred)
-    Actual=np.array(y_test)
-    print(y_test)
-    count=0
-    for i in range(len(pred)):
-        if pred[i] == Actual[i]:
-            count+=1
-    print(count*100/len(pred))
+    model=NaiveBayes(X_trainNew.toarray(),y_train)          #training the model
+    pred=model.predict(X_testNew)                           #predecting the labels for test data
+    Actual=np.array(y_test)                                 #converting the test labels in numpy array
+
+    print(accuracy_score(pred, Actual)*100)                 #predict accuracy score of model
 
 
 if __name__ == "__main__":
