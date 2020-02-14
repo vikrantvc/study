@@ -61,7 +61,7 @@ def main():
     df=LabelEncoding(df)
     df=Word2VecTFIDF(df)
     score_list=NaiveBayes(df)
-    # print(score_list)
+    print(score_list)
 
 if __name__ == "__main__":
     main()
