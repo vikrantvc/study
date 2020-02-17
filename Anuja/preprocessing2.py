@@ -62,6 +62,11 @@ def main():
     df=Word2VecTFIDF(df)
     score_list=NaiveBayes(df)
     print(score_list)
+    print(score_list)
+    add=0
+    for i in score_list:
+        add+=i
+    print(add/10)
 
 if __name__ == "__main__":
     main()
